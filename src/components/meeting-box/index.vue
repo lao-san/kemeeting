@@ -1,5 +1,5 @@
 <template>
-  <el-col :span="4" style="margin-left:30px">
+  <el-col :span="4" style="margin-left:30px" @click.native="getMeetingId">
     <el-card :body-style="{ padding: '8px' }">
       <div class="bg" :style="{backgroundImage: 'url(' + httpimage + ')', backgroundSize:'cover'}"></div>
       <div style="padding: 14px;">
@@ -29,7 +29,12 @@ export default {
   computed: {},
   beforeMount() {},
   mounted() {},
-  methods: {},
+  methods: {
+    getMeetingId() {
+      let qId = this.list.id; //会议id
+      this.$emit("getMeetingId", qId);
+    }
+  },
   watch: {}
 };
 </script>

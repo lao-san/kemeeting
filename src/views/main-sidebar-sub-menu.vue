@@ -38,6 +38,9 @@ export default {
   components: {
     SubMenu
   },
+  created(){
+    this.handClick()
+  },
   computed: {
     sidebarLayoutSkin: {
       get() {
@@ -54,6 +57,9 @@ export default {
       if (route.length >= 1) {
         this.$router.push({ name: route[0].name });
       }
+    },
+    handClick(){
+      window.console.log(this.menu)
     }
   }
 };

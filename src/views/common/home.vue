@@ -18,22 +18,14 @@
           <h2>未发布中的会议</h2>
         </div>
       </el-col>
-      <!-- <ul>
-        <li v-for="item in dataList" :key="item.id" v-if="!item.isCheck">
-          <el-col :span="6">
-            <div class="grid-content bg-purple-dark">
-              <img src="/static/img/huiyiim.jpg" alt="会议图片" />
-              <h3>{{item.nameCn}}</h3>
-              <div>
-                <span>{{item.address}}</span>
-                <span>{{item.startTime}}</span>
-              </div>
-            </div>
-          </el-col>
-        </li>
-      </ul>-->
+
       <router-link to="/">
-        <meeting-box v-for="item in unpublished" :key="item.id" :list="item"></meeting-box>
+        <meeting-box
+          v-for="item in unpublished"
+          :key="item.id"
+          :list="item"
+          @getMeetingId="getMeetingListId"
+        ></meeting-box>
       </router-link>
     </el-row>
     <el-row>
@@ -45,7 +37,12 @@
     </el-row>
     <el-row>
       <router-link to="/">
-        <meeting-box v-for="item in release" :key="item.id" :list="item"></meeting-box>
+        <meeting-box
+          v-for="item in release"
+          :key="item.id"
+          :list="item"
+          @getMeetingId="getMeetingListId"
+        ></meeting-box>
       </router-link>
     </el-row>
     <el-row>
@@ -57,7 +54,12 @@
     </el-row>
     <el-row>
       <router-link to="/">
-        <meeting-box v-for="item in delRelease" :key="item.id" :list="item"></meeting-box>
+        <meeting-box
+          v-for="item in delRelease"
+          :key="item.id"
+          :list="item"
+          @getMeetingId="getMeetingListId"
+        ></meeting-box>
       </router-link>
     </el-row>
     <!-- 弹窗, 新增 / 修改 -->
@@ -83,7 +85,8 @@ export default {
       totalPage: 0,
       dataListLoading: false,
       dataListSelections: [],
-      addOrUpdateVisible: false
+      addOrUpdateVisible: false,
+      meetingId: ""
     };
   },
   components: {
@@ -193,6 +196,11 @@ export default {
           }
         });
       });
+    },
+    // 获取会议id
+    getMeetingListId(data) {
+      this.meetingId = data;
+      console.log(this.meetingId);
     }
   }
 };
