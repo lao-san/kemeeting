@@ -11,9 +11,6 @@
       @keyup.enter.native="dataFormSubmit()"
       label-width="136px"
     >
-      <el-form-item label="举办单位id" prop="companyId">
-        <el-input v-model="dataForm.companyId" placeholder="举办单位id"></el-input>
-      </el-form-item>
       <el-form-item label="会议名称(中文)" prop="nameCn">
         <el-input v-model="dataForm.nameCn" placeholder="会议名称(中文)"></el-input>
       </el-form-item>

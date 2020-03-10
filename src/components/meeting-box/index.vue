@@ -1,5 +1,5 @@
 <template>
-  <el-col :span="4" style="margin-left:30px">
+  <el-col :span="4" style="margin-left:30px"  @click.native="handClick()">
     <el-card :body-style="{ padding: '8px' }">
       <div class="bg" :style="{backgroundImage: 'url(' + httpimage + ')', backgroundSize:'cover'}"></div>
       <div style="padding: 14px;">
@@ -18,6 +18,7 @@ export default {
   name: "",
   data() {
     return {
+      id:'',
       httpimage:
         "http://a2.att.hudong.com/36/48/19300001357258133412489354717.jpg"
     };
@@ -28,8 +29,17 @@ export default {
   components: {},
   computed: {},
   beforeMount() {},
-  mounted() {},
-  methods: {},
+  mounted() {
+    this.getMeetingId()
+  },
+  methods: {
+    handClick(){
+      this.$router.push({path:`/meeting/${this.id}`})
+    },
+    getMeetingId() {
+      this.id = this.list.id
+    }
+  },
   watch: {}
 };
 </script>

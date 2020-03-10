@@ -38,6 +38,7 @@ export default {
   components: {
     SubMenu
   },
+  created() {},
   computed: {
     sidebarLayoutSkin: {
       get() {

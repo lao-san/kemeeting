@@ -35,6 +35,7 @@ const mainRoutes = {
     // 提示: 如需要通过iframe嵌套展示内容, 但不通过tab打开, 请自行创建组件使用iframe处理!
     { path: '/home', component: _import('common/home'), name: 'home', meta: { title: '首页' } },
     { path: '/theme', component: _import('common/theme'), name: 'theme', meta: { title: '主题' } },
+    { path: '/meeting/:id', component: _import('common/meeting-index'), name: 'meeting', meta: { title: '会议' } }
   ],
   beforeEnter (to, from, next) {
     let token = Vue.cookie.get('token')
@@ -61,6 +62,7 @@ router.beforeEach((to, from, next) => {
     next()
   } else {
     http({
+
       url: http.adornUrl('/sys/menu/nav'),
       method: 'get',
       params: http.adornParams()
