@@ -55,6 +55,9 @@ export default {
       if (route.length >= 1) {
         this.$router.push({ name: route[0].name });
       }
+    },
+    handClick(){
+      window.console.log(this.menu)
     }
   }
 };
